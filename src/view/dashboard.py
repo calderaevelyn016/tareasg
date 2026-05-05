@@ -1,6 +1,6 @@
 import flet as ft
 
-def DashboardView(page, tarea_controller):
+def dashboardView(page, tarea_controller):
     user = page.session.get("user")
     lista_tareas = ft.Column(scroll=ft.ScrollMode.ALWAYS, expand=True)
 
@@ -13,7 +13,7 @@ def DashboardView(page, tarea_controller):
                         content=ft.ListTile(
                             title=ft.Text(t['titulo'], weight="bold"),
                             subtitle=ft.Text(f"{t['descripcion']}\nPrioridad: {t['prioridad']}"),
-                            trailing=ft.Badge(content=ft.Text(t['estado']), bgcolor=ft.Colors.ORANGE_300)
+                            trailing=ft.Badge(content=ft.Text(t['estado']), bgcolor=ft.colors.ORANGE_300)
                         ), padding=10
                     )
                 )
@@ -38,13 +38,13 @@ def DashboardView(page, tarea_controller):
         ft.AppBar(
             title=ft.Text(f"Bienvenido, {user['nombre']}"),
             actions=[
-                ft.IconButton(ft.Icons.EXIT_TO_APP, on_click=lambda _: page.go("/"))
+                ft.IconButton(ft.icons.EXIT_TO_APP, on_click=lambda _: page.go("/"))
             ],
         ),
         ft.Column([
             ft.Row([
                 txt_titulo,
-                ft.FloatingActionButton(icon=ft.Icons.ADD, on_click=add_task),
+                ft.FloatingActionButton(icon=ft.icons.ADD, on_click=add_task),
             ]),
             ft.Divider(),
             ft.Text("Mis Tareas Pendientes", size=20, weight="bold"),
